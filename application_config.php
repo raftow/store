@@ -10,7 +10,7 @@ $config_arr = array(
         'x_module_means_company'=>false,
 
 
-        'application_name' => ['ar' => 'ادارة أعمال القبول', 'en' => 'Admissions management',],
+        'application_name' => ['ar' => 'صيدلية العيادة', 'en' => 'Clinic pharmacy',],
                                   
         'no_menu_for_login' => true,
 

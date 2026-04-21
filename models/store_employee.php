@@ -60,8 +60,8 @@ class StoreEmployee extends StoreObject
                 } else {
                         $empl_id = $objme ? $objme->getEmployeeId() : 0;
 
-                        if ($empl_id) $iam_general_supervisor = StoreObject::userConnectedIsGeneralSupervisor();
-                        if ($empl_id) $iam_supervisor = StoreObject::userConnectedIsSupervisor();
+                        if ($empl_id) $iam_general_supervisor = StoreObject::userIsGeneralSupervisor();
+                        if ($empl_id) $iam_supervisor = StoreObject::userIsSupervisor();
                         if (!$iam_general_supervisor) $iam_general_supervisor = 0;
                         if (!$iam_supervisor) $iam_supervisor = 0;
 
@@ -314,7 +314,7 @@ class StoreEmployee extends StoreObject
 
 
 
-        public function afterInsert($id, $fields_updated)
+        public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent=false)
         {
                 if ($this->sureIs("active") and ($this->getVal("employee_id") > 0)) {
                         $empl = $this->het("employee_id");
@@ -325,7 +325,7 @@ class StoreEmployee extends StoreObject
                 }
         }
 
-        public function afterUpdate($id, $fields_updated)
+        public function afterUpdate($id, $fields_updated, $disableAfterCommitDBEvent=false)
         {
                 if(!$this->getVal("employee_id"))
                 {
@@ -742,10 +742,10 @@ class StoreEmployee extends StoreObject
         }
 
 
-        protected function hideDisactiveRowsFor($auser)
+        protected function hideNonActiveRowsFor($auser)
         {
                 if (!$auser) return true;
-                if (StoreObject::userConnectedIsGeneralSupervisor($auser)) return false;
+                if (StoreObject::userIsGeneralSupervisor($auser)) return false;
                 if ($auser->isAdministrator()) return false;
                 return true;
         }

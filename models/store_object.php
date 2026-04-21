@@ -41,7 +41,7 @@ class StoreObject extends AfwMomkenObject{
             return $scopeList;
         }
         */
-        public static function userConnectedIsSupervisor($objme = null)
+        public static function userIsSupervisor($objme = null)
         {
                 if (!$objme) $objme = AfwSession::getUserConnected();
                 if (!$objme) return 0;
@@ -52,7 +52,7 @@ class StoreObject extends AfwMomkenObject{
                 return StoreEmployee::isAdministrator($employee_id);
         }
 
-        public static function userConnectedIsGeneralSupervisor($objme = null)
+        public static function userIsGeneralSupervisor($objme = null)
         {
                 if (!$objme) $objme = AfwSession::getUserConnected();
                 if (!$objme) return 0;
@@ -73,6 +73,7 @@ class StoreObject extends AfwMomkenObject{
                 return  $list_of_items;
         }
 
+        /*
         public function list_of_gender_id()
         {
                 $list_of_items = array();
@@ -80,7 +81,7 @@ class StoreObject extends AfwMomkenObject{
                 $list_of_items[2] = "أنثى";
 
                 return  $list_of_items;
-        }
+        }*/
 
         public static function code_of_stock_operation_enum($lkp_id=null)
         {

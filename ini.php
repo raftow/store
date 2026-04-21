@@ -1,4 +1,4 @@
 <?php
-$NOM_SITE["ar"] = 'ادارة أعمال القبول';
-$NOM_SITE["en"] = 'Admissions management';
-$NOM_SITE["fr"] = 'Admissions management';
+$NOM_SITE["ar"] = 'صيدلية العيادة';
+$NOM_SITE["en"] = 'Clinic pharmacy';
+$NOM_SITE["fr"] = 'Pharmacie de la clinique';

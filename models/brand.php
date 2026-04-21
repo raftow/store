@@ -141,7 +141,7 @@ class Brand extends AFWObject{
         
         public function beforeDelete($id,$id_replace) 
         {
-            $server_db_prefix = AfwSession::config("db_prefix","tvtc_");
+            $server_db_prefix = AfwSession::config("db_prefix","ttc_");
             
             if(!$id)
             {

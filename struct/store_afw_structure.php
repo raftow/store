@@ -15,7 +15,7 @@ class StoreStoreAfwStructure
 
 
 
-                        // $obj->UNIQUE_KEY = array('XXX', 'YYY');
+                        $obj->UNIQUE_KEY = array('lookup_code');
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
@@ -33,6 +33,11 @@ class StoreStoreAfwStructure
         array(
                 'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
 
+                'lookup_code' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
+				'EDIT' => true,  'QEDIT' => true,  
+				'SIZE' => 16,  'MAXLENGTH' => 16,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
+				'TYPE' => 'TEXT',  'READONLY' => false,  'DNA' => true, 
+				'CSS' => 'width_pct_50', ),
 
                 'name_ar' => array(
                         'SEARCH' => true,

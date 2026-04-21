@@ -13,9 +13,7 @@ class StoreBrandAfwStructure
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                         $obj->ORDER_BY_FIELDS = "name_ar";
 
-
-
-                        // $obj->UNIQUE_KEY = array('XXX', 'YYY');
+                        $obj->UNIQUE_KEY = array('lookup_code');
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
@@ -33,6 +31,25 @@ class StoreBrandAfwStructure
         array(
                 'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
 
+                'lookup_code' => array(
+			'SEARCH' => true,
+			'QSEARCH' => false,
+			'SHOW' => true,
+			'AUDIT' => false,
+			'RETRIEVE' => true,
+			'EDIT' => true,
+			'QEDIT' => false,
+			'SIZE' => 16,
+			'MAXLENGTH' => 16,
+			'MIN-SIZE' => 1,
+			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+			'MANDATORY' => true,
+			'UTF8' => true,
+			'TYPE' => 'TEXT',
+			'READONLY' => false,
+			'DNA' => true,
+			'CSS' => 'width_pct_50',
+		),
 
                 'name_ar' => array(
                         'SEARCH' => true,
