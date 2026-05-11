@@ -53,8 +53,28 @@ class StoreObject extends AfwMomkenObject
         if (!$employee_id)
             return 0;
 
-        return StoreEmployee::isAdministrator($employee_id);
-    }
+            if (!$objme) $objme = AfwSession::getUserConnected();
+            if ($objme) 
+            {
+                $employee_id = $objme->getEmployeeId();
+                if ($employee_id)
+                {
+                    $empAccountList = StoreEmployee::loadMyEmployeeAccounts($employee_id);
+                    foreach($empAccountList as $empAccountItem)
+                    {
+                        $tmpScopes = $empAccountItem->getMyScopes();
+                        $scopeList = array_merge($scopeList, $tmpScopes);
+                    }
+                }
+            }
+            
+            return $scopeList;
+        }
+        */
+        public static function userIsSupervisor($objme = null)
+        {
+                if (!$objme) $objme = AfwSession::getUserConnected();
+                if (!$objme) return 0;
 
     public static function userConnectedIsGeneralSupervisor($objme = null)
     {
@@ -110,9 +130,20 @@ class StoreObject extends AfwMomkenObject
         return self::stock_operation()[$lang];
     }
 
+/*
+        public function list_of_gender_id()
+        {
+                $list_of_items = array();
+                $list_of_items[1] = "ذكر";
+                $list_of_items[2] = "أنثى";
+
+                return  $list_of_items;
+        }*/
+
     public static function stock_operation()
     {
         $arr_list_of_stock_operation = array();
+        
 
         $arr_list_of_stock_operation['code'][1] = 'IN';
         $arr_list_of_stock_operation['ar'][1] = 'دخول';

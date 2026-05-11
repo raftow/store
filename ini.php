@@ -1,4 +1,4 @@
 <?php
-$NOM_SITE = ['ar' => 'ادارة الاشعارات والمراسلات', 
-             'en' => 'Notification & Messaging Management', 
-             'fr' => 'Gestion de Notifications & Messageries',];
+$NOM_SITE["ar"] = 'صيدلية العيادة';
+$NOM_SITE["en"] = 'Clinic pharmacy';
+$NOM_SITE["fr"] = 'Pharmacie de la clinique';

@@ -61,14 +61,10 @@ class StoreEmployee extends StoreObject
                 } else {
                         $empl_id = $objme ? $objme->getEmployeeId() : 0;
 
-                        if ($empl_id)
-                                $iam_general_supervisor = StoreObject::userConnectedIsGeneralSupervisor();
-                        if ($empl_id)
-                                $iam_supervisor = StoreObject::userConnectedIsSupervisor();
-                        if (!$iam_general_supervisor)
-                                $iam_general_supervisor = 0;
-                        if (!$iam_supervisor)
-                                $iam_supervisor = 0;
+                        if ($empl_id) $iam_general_supervisor = StoreObject::userIsGeneralSupervisor();
+                        if ($empl_id) $iam_supervisor = StoreObject::userIsSupervisor();
+                        if (!$iam_general_supervisor) $iam_general_supervisor = 0;
+                        if (!$iam_supervisor) $iam_supervisor = 0;
 
                         // if the user is an employee
                         // he is allowed to see store employee if :
@@ -324,6 +320,10 @@ class StoreEmployee extends StoreObject
 
                 return $pbms;
         }
+
+
+
+
 
         public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false)
         {
@@ -752,14 +752,12 @@ class StoreEmployee extends StoreObject
                 return AfwDateHelper::shiftHijriDate('', -180);
         }
 
-        protected function hideDisactiveRowsFor($auser)
+
+        protected function hideNonActiveRowsFor($auser)
         {
-                if (!$auser)
-                        return true;
-                if (StoreObject::userConnectedIsGeneralSupervisor($auser))
-                        return false;
-                if ($auser->isAdministrator())
-                        return false;
+                if (!$auser) return true;
+                if (StoreObject::userIsGeneralSupervisor($auser)) return false;
+                if ($auser->isAdministrator()) return false;
                 return true;
         }
 

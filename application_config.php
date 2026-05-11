@@ -9,11 +9,11 @@ $config_arr = array(
 
         // roClassName => Booking,
 
-        'x_module_means_company'=>false,
+        'x_module_means_company' => false,
 
 
-        'application_name' => ['ar' => 'ادارة الاشعارات والمراسلات', 'en' => 'Notification & Messaging Management',],
-                                  
+        'application_name' => ['ar' => 'صيدلية العيادة', 'en' => 'Clinic pharmacy',],
+
         'no_menu_for_login' => true,
 
         'enable_language_switch' => true,
@@ -28,31 +28,34 @@ $config_arr = array(
 
         //  classes params
         /*TravelTemplate_showId =>true, */
-        
-        'default_controller_name' => "content",                                  
 
-        
+        'default_controller_name' => "content",
 
-        'notify_customer' => array("new_request" => array("sms"=>true, "email" => false, "web" => false, "whatsup" => false),
-        
-                                ),
 
-        'notify_manager' => array("new_request" => array("sms"=>true, "email" => false, "web" => true, "whatsup" => false),
-        
-                        ),
 
-        'notify_employee' => array("new_request" => array("sms"=>true, "email" => false, "web" => true, "whatsup" => false),
-        
-                ),
+        'notify_customer' => array(
+                "new_request" => array("sms" => true, "email" => false, "web" => false, "whatsup" => false),
+
+        ),
+
+        'notify_manager' => array(
+                "new_request" => array("sms" => true, "email" => false, "web" => true, "whatsup" => false),
+
+        ),
+
+        'notify_employee' => array(
+                "new_request" => array("sms" => true, "email" => false, "web" => true, "whatsup" => false),
+
+        ),
 
 
         'general_company_id' => 1,
 
         'tasksClassName' => "Request",
 
-        'consider_user_as_customer' =>true,
+        'consider_user_as_customer' => true,
 
-        'default_customer_type' =>2,
+        'default_customer_type' => 2,
 
         'LOGO_APP_HEIGHT' => 66,
         'LOGO_APP_MARGIN_TOP' => 5,
@@ -62,21 +65,21 @@ $config_arr = array(
         'LOGO_COMP_MARGIN_TOP' => 14,
         'TITLE_COMP_HEIGHT' => 56,
         'TITLE_COMP_MARGIN_TOP' => -10,
-        
-        
-        
+
+
+
 
         'DISABLE_PROJECT_ITEMS_MENU' => true,
 
         'register_file' => "customer_register",
 
-        
+
         // APPLICATION SETTINGS
         'MODE_DEVELOPMENT' => true,
 
         'store-AfileClass' => "WorkflowFile",
 
-        'store-file_types' => [7,20,6,28,18,27,29],
+        'store-file_types' => [7, 20, 6, 28, 18, 27, 29],
 
 
         // SIS settings
@@ -89,13 +92,13 @@ $config_arr = array(
         'school_year_date_current_year' => 'CY-02-01',
 
 
-        "workfile_settings"=>[
-                "Applicant"=>["fields"=>["employer_approval_afile_id"]],
-                "ApplicantQualification"=>["fields"=>["adm_file_id"]],
-                "ApplicantEvaluation"=>["fields"=>["workflow_file_id"]],
-                "ApplicantFile"=>["fields"=>["workflow_file_id"]],                                                
+        "workfile_settings" => [
+                "Applicant" => ["fields" => ["employer_approval_afile_id"]],
+                "ApplicantQualification" => ["fields" => ["adm_file_id"]],
+                "ApplicantEvaluation" => ["fields" => ["workflow_file_id"]],
+                "ApplicantFile" => ["fields" => ["workflow_file_id"]],
         ],
 
-        );
+);
 
 //$sql_capture_and_backtrace = "or (session_date =";

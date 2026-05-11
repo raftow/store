@@ -9,7 +9,7 @@ class StockMovement extends AFWObject{
 
         public static $MY_ATABLE_ID=14046; 
   
-        public static $DATABASE		= "tvtc_store";
+        public static $DATABASE		= "ttc_store";
         public static $MODULE		        = "store";        
         public static $TABLE			= "stock_movement";
 
@@ -148,7 +148,7 @@ class StockMovement extends AFWObject{
         
         public function beforeDelete($id,$id_replace) 
         {
-            $server_db_prefix = AfwSession::config("db_prefix","tvtc_");
+            $server_db_prefix = AfwSession::config("db_prefix","ttc_");
             
             if(!$id)
             {
