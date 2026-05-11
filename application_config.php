@@ -4,13 +4,15 @@ $config_arr = array(
         'store_application_id' => 1285,
 
         'application_code' => 'store',
+        'domain_code' => 'store',
+        'system_code' => 'eservices',
 
         // roClassName => Booking,
 
         'x_module_means_company'=>false,
 
 
-        'application_name' => ['ar' => 'ادارة أعمال القبول', 'en' => 'Admissions management',],
+        'application_name' => ['ar' => 'ادارة الاشعارات والمراسلات', 'en' => 'Notification & Messaging Management',],
                                   
         'no_menu_for_login' => true,
 

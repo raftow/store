@@ -1,4 +1,4 @@
 <?php
-$NOM_SITE["ar"] = 'ادارة أعمال القبول';
-$NOM_SITE["en"] = 'Admissions management';
-$NOM_SITE["fr"] = 'Admissions management';
+$NOM_SITE = ['ar' => 'ادارة الاشعارات والمراسلات', 
+             'en' => 'Notification & Messaging Management', 
+             'fr' => 'Gestion de Notifications & Messageries',];
