@@ -53,28 +53,27 @@ class StoreObject extends AfwMomkenObject
         if (!$employee_id)
             return 0;
 
-            if (!$objme) $objme = AfwSession::getUserConnected();
-            if ($objme) 
-            {
-                $employee_id = $objme->getEmployeeId();
-                if ($employee_id)
-                {
-                    $empAccountList = StoreEmployee::loadMyEmployeeAccounts($employee_id);
-                    foreach($empAccountList as $empAccountItem)
-                    {
-                        $tmpScopes = $empAccountItem->getMyScopes();
-                        $scopeList = array_merge($scopeList, $tmpScopes);
-                    }
+        $scopeList = [];
+
+        if (!$objme) $objme = AfwSession::getUserConnected();
+        if ($objme) {
+            $employee_id = $objme->getEmployeeId();
+            if ($employee_id) {
+                $empAccountList = StoreEmployee::loadMyEmployeeAccounts($employee_id);
+                foreach ($empAccountList as $empAccountItem) {
+                    $tmpScopes = $empAccountItem->getMyScopes();
+                    $scopeList = array_merge($scopeList, $tmpScopes);
                 }
             }
-            
-            return $scopeList;
         }
-        */
-        public static function userIsSupervisor($objme = null)
+
+        return $scopeList;
+    }
+
+    /*public static function userIsSupervisor($objme = null)
         {
                 if (!$objme) $objme = AfwSession::getUserConnected();
-                if (!$objme) return 0;
+                if (!$objme) return 0;*/
 
     public static function userConnectedIsGeneralSupervisor($objme = null)
     {
@@ -130,7 +129,7 @@ class StoreObject extends AfwMomkenObject
         return self::stock_operation()[$lang];
     }
 
-/*
+    /*
         public function list_of_gender_id()
         {
                 $list_of_items = array();
@@ -143,7 +142,7 @@ class StoreObject extends AfwMomkenObject
     public static function stock_operation()
     {
         $arr_list_of_stock_operation = array();
-        
+
 
         $arr_list_of_stock_operation['code'][1] = 'IN';
         $arr_list_of_stock_operation['ar'][1] = 'دخول';
@@ -719,7 +718,7 @@ class StoreObject extends AfwMomkenObject
 
         $main_company = AfwSession::config('main_company', 'all');
         $file_dir_name = dirname(__FILE__);
-        include ($file_dir_name . "/../../client-$main_company/extra/qualification_level-$main_company.php");
+        include($file_dir_name . "/../../client-$main_company/extra/qualification_level-$main_company.php");
 
         foreach ($lookup as $id => $lookup_row) {
             $arr_list_of_level['ar'][$id] = $lookup_row['ar'];
@@ -1222,7 +1221,7 @@ class StoreObject extends AfwMomkenObject
         $api_runner_class = AfwStringHelper::tableToClass($api_runner_file);
         if (!class_exists($api_runner_class, false)) {
             $file_dir_name = dirname(__FILE__);
-            require ($file_dir_name . "/../../client-$main_company/extra/$api_runner_file.php");
+            require($file_dir_name . "/../../client-$main_company/extra/$api_runner_file.php");
         }
 
         return $api_runner_class;
@@ -1235,7 +1234,7 @@ class StoreObject extends AfwMomkenObject
         $tunit_to_orgunit_class = AfwStringHelper::tableToClass($tunit_to_orgunit_file);
         if (!class_exists($tunit_to_orgunit_class, false)) {
             $file_dir_name = dirname(__FILE__);
-            require ($file_dir_name . "/../../client-$main_company/extra/$tunit_to_orgunit_file.php");
+            require($file_dir_name . "/../../client-$main_company/extra/$tunit_to_orgunit_file.php");
         }
 
         return $tunit_to_orgunit_class;
@@ -1254,7 +1253,7 @@ class StoreObject extends AfwMomkenObject
         $main_company = AfwSession::config('main_company', 'all');
         $current_domain = 25;
         $file_dir_name = dirname(__FILE__);
-        include ($file_dir_name . "/../../client-$main_company/extra/hierarchy_level-$main_company.php");
+        include($file_dir_name . "/../../client-$main_company/extra/hierarchy_level-$main_company.php");
 
         foreach ($hierarchy_level as $id => $lookup_row) {
             $arr_list_of_hierarchy_level['ar'][$id] = $lookup_row['ar'];

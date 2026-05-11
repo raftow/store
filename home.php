@@ -4,7 +4,7 @@ $file_dir_name = dirname(__FILE__);
 
 require_once("$file_dir_name/../config/global_config.php");
 
-$datatable_on=1;
+$datatable_on = 1;
 $limite = 0;
 $genere_xls = 0;
 
@@ -47,8 +47,8 @@ $reqList = Request::loadRecords($where_old_still_not_assigned, $limit="5", $orde
 
 $header_trad = array("missed"=>"عدد الطلبات", "name" => 'الادارة - المشرف');
 */
-if(!$lang) $lang = AfwLanguageHelper::getGlobalLanguage();
-if(!$lang) $lang = "ar";
+if (!$lang) $lang = AfwLanguageHelper::getGlobalLanguage();
+if (!$lang) $lang = "ar";
 // $out_scr .= Page::showPage("store", "main-page", $lang);
 
 
@@ -57,18 +57,16 @@ $out_scr .= "<div id='page-content-wrapper' class='qsearch_page'><div class='row
 
 // customer number increasing (cni)
 
-if(true)
-{
-    $out_scr .= "<div class='qfilter col-sm-10 col-md-10 pb10'><h1>احصائيات نمو عدد المتقدمين</h1></div>";
-    $out_scr .= "<canvas id=\"cni\" style=\"width:100%;max-width:900px;margin:auto\"></canvas>";
-    $out_scr .= AfwChartHelper::oniChartScript("Applicant", "cni", "line", -10, 0, 1, 'y', 'year', '');
+if (true) {
+  $out_scr .= "<div class='qfilter col-sm-10 col-md-10 pb10'><h1>احصائيات نمو البضائع</h1></div>";
+  $out_scr .= "<canvas id=\"cni\" style=\"width:100%;max-width:900px;margin:auto\"></canvas>";
+  $out_scr .= AfwChartHelper::oniChartScript("Good", "cni", "line", -10, 0, 1, 'y', 'year', '');
 }
 
-if(true)
-{
-  $out_scr .= "<div class='qfilter col-sm-10 col-md-10 pb10'><h1>احصائيات نمو عدد طلبات التقديم</h1></div>";
-    $out_scr .= "<canvas id=\"rni\" style=\"width:100%;max-width:900px;margin:auto\"></canvas>";
-    $out_scr .= AfwChartHelper::oniChartScript("Application", "rni", "line", -10, 0, 1, 'y', 'year', '', ['min'=>50, 'max'=>150]);
+if (true) {
+  $out_scr .= "<div class='qfilter col-sm-10 col-md-10 pb10'><h1>احصائيات نمو المبيعات</h1></div>";
+  $out_scr .= "<canvas id=\"rni\" style=\"width:100%;max-width:900px;margin:auto\"></canvas>";
+  $out_scr .= AfwChartHelper::oniChartScript("StockMovement", "rni", "line", -10, 0, 1, 'y', 'year', '', ['min' => 50, 'max' => 150]);
 }
 
 
@@ -119,5 +117,3 @@ foreach($schoolList as $schoolObj)
   $out_scr .= AfwShowHelper::showMinibox($schoolObj, $structure);      
 }
 */
-                                   
-?>
