@@ -13,9 +13,9 @@ class StoreMstoreAfwStructure
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                         $obj->ORDER_BY_FIELDS = "name_ar";
                         $obj->editByStep = true;
-                        $obj->editNbSteps = 2; 
+                        $obj->editNbSteps = 2;
                         $obj->UNIQUE_KEY = array('lookup_code');
-                        // $obj->UNIQUE_KEY = array('orgunit_id');
+                        // $obj->UNIQUE_KEY2 = array('orgunit_id');
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
@@ -53,7 +53,7 @@ class StoreMstoreAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                
+
 
                 'name_en' => array(
                         'SEARCH' => true,
@@ -110,33 +110,79 @@ class StoreMstoreAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                'lookup_code' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
-				'EDIT' => true,  'QEDIT' => true,  
-				'SIZE' => 16,  'MAXLENGTH' => 16,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
-				'TYPE' => 'TEXT',  'READONLY' => false,  'DNA' => true, 
-				'CSS' => 'width_pct_50', ),
+                'lookup_code' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 16,
+                        'MAXLENGTH' => 16,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                ),
 
-                'orgunit_id' => array('SHORTNAME' => 'orgunit',  'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
-				'EDIT' => true,  'QEDIT' => true,  'STEP' => 99,
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
-				'TYPE' => 'FK',  'ANSWER' => 'orgunit',  'ANSMODULE' => 'hrm',  
-				'RELATION' => 'OneToOneBidirectional',  'READONLY' => false,  'DNA' => true, 
-				'CSS' => 'width_pct_50', ),
+                'orgunit_id' => array(
+                        'SHORTNAME' => 'orgunit',
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'STEP' => 99,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'orgunit',
+                        'ANSMODULE' => 'hrm',
+                        'RELATION' => 'OneToOneBidirectional',
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                ),
 
 
-                'allEmployeeList' => array('STEP' => 2, 'FGROUP' => 'allEmployeeList',  
-                        'TYPE' => 'FK',  'ANSWER' => 'store_employee',  'ANSMODULE' => 'store',  
-                        'CATEGORY' => 'ITEMS',  'ITEM' => '',  
-                        'WHERE' => "orgunit_id = §orgunit_id§", 
+                'allEmployeeList' => array(
+                        'STEP' => 2,
+                        'FGROUP' => 'allEmployeeList',
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'store_employee',
+                        'ANSMODULE' => 'store',
+                        'CATEGORY' => 'ITEMS',
+                        'ITEM' => '',
+                        'WHERE' => "orgunit_id = §orgunit_id§",
                         'HIDE_COLS' => ["orgunit_id"],
                         // 'FORCE_COLS' => ["inbox_count"],
-                        'FORMAT' => 'retrieve',  'SHOW' => true, 'READONLY' => true,  'EDIT' => true,  
-                        'ICONS' => true,  'DELETE-ICON' => false,  'BUTTONS' => true,  'NO-LABEL' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  
-                        'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
-                        ),	
+                        'FORMAT' => 'retrieve',
+                        'SHOW' => true,
+                        'READONLY' => true,
+                        'EDIT' => true,
+                        'ICONS' => true,
+                        'DELETE-ICON' => false,
+                        'BUTTONS' => true,
+                        'NO-LABEL' => false,
+                        'SEARCH-BY-ONE' => '',
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                ),
 
 
-	
+
 
 
                 'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),

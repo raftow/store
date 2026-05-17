@@ -15,13 +15,13 @@ class StoreInvoiceAfwStructure
 
 
 
-			$obj->UNIQUE_KEY = array('invoice_num');
+			$obj->UNIQUE_KEY = array('mstore_id', 'invoice_num');
 
 			$obj->showQeditErrors = true;
 			$obj->showRetrieveErrors = true;
 			$obj->general_check_errors = true;
 			$obj->editByStep = true;
-            $obj->editNbSteps = 2; 
+			$obj->editNbSteps = 2;
 			// $obj->after_save_edit = array("class"=>'Road',"attribute"=>'road_id', "currmod"=>'btb',"currstep"=>9);
 			$obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'store', "class" => 'Invoice', "submit" => true);
 		} else {
@@ -35,12 +35,28 @@ class StoreInvoiceAfwStructure
 	array(
 		'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
 
-		'mstore_id' => array('SHORTNAME' => 'mstore',  'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
-				'EDIT' => true,  'QEDIT' => true,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'UTF8' => false,  
-				'TYPE' => 'FK',  'ANSWER' => 'mstore',  'ANSMODULE' => 'store',  
-				'RELATION' => 'unkn',  'READONLY' => false,  'DNA' => true, 
-				'CSS' => 'width_pct_25', ),
+		'mstore_id' => array(
+			'SHORTNAME' => 'mstore',
+			'SEARCH' => true,
+			'QSEARCH' => false,
+			'SHOW' => true,
+			'AUDIT' => false,
+			'RETRIEVE' => true,
+			'EDIT' => true,
+			'QEDIT' => true,
+			'SIZE' => 32,
+			'MAXLENGTH' => 32,
+			'MIN-SIZE' => 1,
+			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+			'UTF8' => false,
+			'TYPE' => 'FK',
+			'ANSWER' => 'mstore',
+			'ANSMODULE' => 'store',
+			'RELATION' => 'unkn',
+			'READONLY' => false,
+			'DNA' => true,
+			'CSS' => 'width_pct_25',
+		),
 
 		'stock_sens_enum' => array(
 			'SHORTNAME' => 'sens',
@@ -63,7 +79,7 @@ class StoreInvoiceAfwStructure
 			'DNA' => true,
 			'CSS' => 'width_pct_25',
 		),
-	
+
 
 		'customer_type_id' => array(
 			'SHORTNAME' => 'type',
@@ -92,7 +108,7 @@ class StoreInvoiceAfwStructure
 		),
 
 		'newold_enum' => array(
-			'SHORTNAME' => 'sens',
+			'SHORTNAME' => 'newold',
 			'SEARCH' => true,
 			'QSEARCH' => true,
 			'SHOW' => true,
@@ -331,16 +347,30 @@ class StoreInvoiceAfwStructure
 			'CSS' => 'width_pct_50',
 		),
 
-		'invoice_num' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
-				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 16,  'MAXLENGTH' => 16,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
-				'TYPE' => 'TEXT',  'READONLY' => true,  'DNA' => true, 
-				'CSS' => 'width_pct_50', ),
+		'invoice_num' => array(
+			'SEARCH' => true,
+			'QSEARCH' => false,
+			'SHOW' => true,
+			'AUDIT' => false,
+			'RETRIEVE' => true,
+			'EDIT' => true,
+			'QEDIT' => false,
+			'SIZE' => 16,
+			'MAXLENGTH' => 16,
+			'MIN-SIZE' => 1,
+			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+			'MANDATORY' => true,
+			'UTF8' => true,
+			'TYPE' => 'TEXT',
+			'READONLY' => true,
+			'DNA' => true,
+			'CSS' => 'width_pct_50',
+		),
 
 
-	
 
-		
+
+
 
 		'total_amount' => array(
 			'SEARCH' => true,
@@ -383,18 +413,36 @@ class StoreInvoiceAfwStructure
 		),
 
 
-		'stockMovementList' => array('STEP' => 2, 'SHORTNAME' => 'stockMovements',  'SHOW' => true,  
-				'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  
-				'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
-				'EDIT' => false,  'QEDIT' => true,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE", 
-				'MANDATORY' => true,  'UTF8' => false,  
-				'TYPE' => 'FK',  
-				'CATEGORY' => 'ITEMS',  'ANSWER' => 'stock_movement',  'ANSMODULE' => 'store',  'ITEM' => 'invoice_id',  
-				'READONLY' => true,  
-				'CSS' => 'width_pct_100', ),
+		'stockMovementList' => array(
+			'STEP' => 2,
+			'SHORTNAME' => 'stockMovements',
+			'SHOW' => true,
+			'FORMAT' => 'retrieve',
+			'ICONS' => true,
+			'DELETE-ICON' => true,
+			'BUTTONS' => true,
+			'SEARCH' => false,
+			'QSEARCH' => false,
+			'AUDIT' => false,
+			'RETRIEVE' => false,
+			'EDIT' => false,
+			'QEDIT' => true,
+			'SIZE' => 32,
+			'MAXLENGTH' => 32,
+			'MIN-SIZE' => 1,
+			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+			'MANDATORY' => true,
+			'UTF8' => false,
+			'TYPE' => 'FK',
+			'CATEGORY' => 'ITEMS',
+			'ANSWER' => 'stock_movement',
+			'ANSMODULE' => 'store',
+			'ITEM' => 'invoice_id',
+			'READONLY' => true,
+			'CSS' => 'width_pct_100',
+		),
 
-		
+
 
 
 		'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),
