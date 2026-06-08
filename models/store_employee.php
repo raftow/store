@@ -552,7 +552,7 @@ class StoreEmployee extends StoreObject
         {
                 $obj = new StoreEmployee();
                 if (!$orgunit_id)
-                        $obj->simpleError('getInvestigatorList need a correct and valid orgunit_id');
+                        throw new AfwRuntimeException('getInvestigatorList need a correct and valid orgunit_id');
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
@@ -568,7 +568,7 @@ class StoreEmployee extends StoreObject
         {
                 $obj = new StoreEmployee();
                 if (!$orgunit_id)
-                        $obj->simpleError('getInvestigatorList need a correct and valid orgunit_id');
+                        throw new AfwRuntimeException('getInvestigatorList need a correct and valid orgunit_id');
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
