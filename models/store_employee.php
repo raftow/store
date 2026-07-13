@@ -331,7 +331,7 @@ class StoreEmployee extends StoreObject
                         $empl = $this->het('employee_id');
                         if ($empl) {
                                 $empl->addMeThisJobrole(self::$JOBROLE_CASHER);
-                                $empl->updateMyUserInformation();
+                                $empl->updateMyUserInformationAndRoles();
                         }
                 }
         }
@@ -353,25 +353,25 @@ class StoreEmployee extends StoreObject
                  *                         $empl->addMeThisJobrole(self::$JOBROLE_STORE_SUPERVISOR);
                  *                         $empl->addMeThisJobrole(self::$JOBROLE_STORE_RESPONSIBLE);
                  *                         $empl->addMeThisJobrole(self::$JOBROLE_STORE_DIRECTOR);
-                 *                         $empl->updateMyUserInformation();
+                 *                         $empl->updateMyUserInformationAndRoles();
                  *                 } elseif ($this->sureIs("admin")) {
                  *                         $empl->addMeThisJobrole(self::$JOBROLE_STORE_SUPERVISOR);
                  *                         $empl->addMeThisJobrole(self::$JOBROLE_STORE_RESPONSIBLE);
                  *                         $empl->addMeThisJobrole(self::$JOBROLE_STORE_DIRECTOR);
-                 *                         $empl->updateMyUserInformation();
+                 *                         $empl->updateMyUserInformationAndRoles();
                  *                 } else {
                  *                         $empl->addMeThisJobrole(self::$JOBROLE_CASHER);
                  *                         $empl->removeMeThisJobrole(self::$JOBROLE_STORE_SUPERVISOR);
                  *                         $empl->removeMeThisJobrole(self::$JOBROLE_STORE_RESPONSIBLE);
                  *                         $empl->removeMeThisJobrole(self::$JOBROLE_STORE_DIRECTOR);
-                 *                         $empl->updateMyUserInformation();
+                 *                         $empl->updateMyUserInformationAndRoles();
                  *                 }
                  *         } else {
                  *                 $empl->removeMeThisJobrole(self::$JOBROLE_CASHER);
                  *                 $empl->removeMeThisJobrole(self::$JOBROLE_STORE_SUPERVISOR);
                  *                 $empl->removeMeThisJobrole(self::$JOBROLE_STORE_RESPONSIBLE);
                  *                 $empl->removeMeThisJobrole(self::$JOBROLE_STORE_DIRECTOR);
-                 *                 $empl->updateMyUserInformation();
+                 *                 $empl->updateMyUserInformationAndRoles();
                  *                 // has been disabled so remove all ongoing assigned tickets
                  *                 $this->removeMeAllAssigned();
                  *         }
