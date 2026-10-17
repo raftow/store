@@ -98,17 +98,6 @@ class StoreObject extends AfwMomkenObject
         return $list_of_items;
     }
 
-    /*
-     * public function list_of_gender_id()
-     * {
-     *         $list_of_items = array();
-     *         $list_of_items[1] = "ذكر";
-     *         $list_of_items[2] = "أنثى";
-     *
-     *         return  $list_of_items;
-     * }
-     */
-
     public static function code_of_stock_operation_enum($lkp_id = null)
     {
         $lang = AfwLanguageHelper::getGlobalLanguage();
@@ -128,16 +117,6 @@ class StoreObject extends AfwMomkenObject
         $lang = AfwLanguageHelper::getGlobalLanguage();
         return self::stock_operation()[$lang];
     }
-
-    /*
-        public function list_of_gender_id()
-        {
-                $list_of_items = array();
-                $list_of_items[1] = "ذكر";
-                $list_of_items[2] = "أنثى";
-
-                return  $list_of_items;
-        }*/
 
     public static function stock_operation()
     {
