@@ -47,7 +47,7 @@ class StockMovement extends AFWObject{
         
         
         
-/*        public function list_of_stock_sens_enum() { 
+/*        public static function list_of_stock_sens_enum() { 
             $list_of_items = array(); 
             $list_of_items[1] = "FUNCTION";  //     code : ... not defined ... 
            return  $list_of_items;

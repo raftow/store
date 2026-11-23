@@ -89,7 +89,7 @@ class StoreObject extends AfwMomkenObject
         return StoreEmployee::isGeneralAdministrator($employee_id);
     }
 
-    public function list_of_idn_type_id()
+    public static function list_of_idn_type_id()
     {
         $list_of_items = array();
         $list_of_items[1] = 'بطاقة أحوال';  //     code : AHWAL
