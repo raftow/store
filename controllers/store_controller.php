@@ -1,12 +1,15 @@
 <?php
 
-class StoreController extends AfwController{
-        
-        public function getMyModule() {
+class StoreController extends AfwController
+{
+
+        public function getMyModule()
+        {
                 return "store";
         }
 
-        public function getMyEmployeeModule() {
+        public function getMyEmployeeModule()
+        {
                 return AfwSession::config("main_module", "");
         }
 
@@ -31,16 +34,16 @@ class StoreController extends AfwController{
         }*/
 
 
-        public function defaultMethod($request)
+        public function defaultMethod(array $request)
         {
-                if($request["rid"]) return "view_school";
+                if ($request["rid"]) return "view_school";
                 return "myschools";
         }
 
         public function loadTheCustomer($customer_id)
         {
-              if(!$customer_id) return null;
-              return CrmCustomer::loadById($customer_id);  
+                if (!$customer_id) return null;
+                return CrmCustomer::loadById($customer_id);
         }
 
         public function checkEmployeeLoggedIn()
@@ -48,12 +51,11 @@ class StoreController extends AfwController{
                 $theEmployeeUser = AfwSession::getUserConnected();
                 $theEmployee = $theEmployeeUser->getEmployee();
 
-                if(!$theEmployee)
-                {
-                    // die("No employee for ".$theEmployeeUser);
-                    $login_module = AfwSession::config("login_module","store"); 
-                    $this->renderLogOutMessage("Session ended !", "../$login_module/login.php");
-                    return;
+                if (!$theEmployee) {
+                        // die("No employee for ".$theEmployeeUser);
+                        $login_module = AfwSession::config("login_module", "store");
+                        $this->renderLogOutMessage("Session ended !", "../$login_module/login.php");
+                        return;
                 }
 
                 return $theEmployee;
@@ -61,8 +63,8 @@ class StoreController extends AfwController{
 
         public function initiateStandardDisplay($request)
         {
-                $theEmployee = self::checkEmployeeLoggedIn(); 
-                
+                $theEmployee = self::checkEmployeeLoggedIn();
+
 
                 return array($theEmployee, null);
         }
@@ -72,13 +74,13 @@ class StoreController extends AfwController{
         public function prepareStandard($request)
         {
                 $custom_scripts = array();
-                $custom_scripts[] = array('type'=>'css' , 'path'=>"./css/content.css");
-                $custom_scripts[] = array('type'=>'css' , 'path'=>"../lib/css/sweetalert2.min.css");
-                $custom_scripts[] = array('type'=>'js',   'path'=>"../lib/js/sweetalert2.min.js");
-                $custom_scripts[] = array('type'=>'js',   'path'=>"../lib/js/sweetalert.min.js");
-                $custom_scripts[] = array('type'=>'js',   'path'=>"./js/jquery.nicefileinput.js");
-                $custom_scripts[] = array('type'=>'css',  'path'=>"./css/jquery-nicefileinput-js.css");
-                
+                $custom_scripts[] = array('type' => 'css', 'path' => "./css/content.css");
+                $custom_scripts[] = array('type' => 'css', 'path' => "../lib/css/sweetalert2.min.css");
+                $custom_scripts[] = array('type' => 'js',   'path' => "../lib/js/sweetalert2.min.js");
+                $custom_scripts[] = array('type' => 'js',   'path' => "../lib/js/sweetalert.min.js");
+                $custom_scripts[] = array('type' => 'js',   'path' => "./js/jquery.nicefileinput.js");
+                $custom_scripts[] = array('type' => 'css',  'path' => "./css/jquery-nicefileinput-js.css");
+
 
                 return $custom_scripts;
         }
@@ -94,9 +96,9 @@ class StoreController extends AfwController{
         {
                 $data = $request;
                 // echo("store = ".var_export($request,true)."<br><br>");
-                foreach($request as $key => $value) $$key = $value;
+                foreach ($request as $key => $value) $$key = $value;
 
-                $data["customerObj"] = AfwSession::getCustomerConnected(true,"CrmCustomer");
+                $data["customerObj"] = AfwSession::getCustomerConnected(true, "CrmCustomer");
                 // call the view 1
                 $this->render("store", "home", $data);
         }
@@ -113,16 +115,16 @@ class StoreController extends AfwController{
 
         public function view_school($request)
         {
-                foreach($request as $key => $value) $$key = $value;
+                foreach ($request as $key => $value) $$key = $value;
                 $data = $request;
 
-                $theEmployee = self::checkEmployeeLoggedIn(); 
+                $theEmployee = self::checkEmployeeLoggedIn();
                 $theCustomer = self::loadTheCustomer($customer_id);
-                
+
 
                 // if(!$rid) $rid = School::myLastSchoolId();
-                
-                if($rid) $data["schoolObj"] = School::loadById($rid);
+
+                if ($rid) $data["schoolObj"] = School::loadById($rid);
                 else $data["schoolObj"] = null;
 
                 /*
@@ -130,27 +132,20 @@ class StoreController extends AfwController{
                 {
                         $data["relatedschoolObj"] = $data["schoolObj"]->getRelatedschool();
                 }*/
-                
+
 
                 // call the view 1
-                if($data["schoolObj"] and (!$data["schoolObj"]->isEmpty()))
-                {
-                        if(($theEmployee->id != $data["schoolObj"]->getVal("customer_id")) and ($theEmployee->id != $data["schoolObj"]->getVal("deligated_id")))
-                           $this->renderError("school view not allowed");
-                        else
-                        {
+                if ($data["schoolObj"] and (!$data["schoolObj"]->isEmpty())) {
+                        if (($theEmployee->id != $data["schoolObj"]->getVal("customer_id")) and ($theEmployee->id != $data["schoolObj"]->getVal("deligated_id")))
+                                $this->renderError("school view not allowed");
+                        else {
                                 $data["main_module_home_page"] = AfwSession::config("main_module_home_page", "");
                                 $data["customer_module_banner"] = AfwSession::config("customer_module_banner", "");
                                 $this->render("store", "view_school", $data);
                         }
-                           
-                }
-                else
-                {
+                } else {
                         $this->renderError("school not found : [rid=$rid]");
                 }
-                
-
         }
 
         /******************************** myschools action ********************************************** */
@@ -162,7 +157,7 @@ class StoreController extends AfwController{
                 return $custom_scripts;
         }
 
-        
+
 
         public function initiateMyschools($request)
         {
@@ -170,22 +165,17 @@ class StoreController extends AfwController{
                 //die("theEmployee=".var_export($theEmployee,true));
                 $data = $request;
                 $data = array();
-                if($theEmployee)
-                {
+                if ($theEmployee) {
                         // die("thecustomer = ".var_export($theCustomer,true));
                         $data["main_module_home_page"] = AfwSession::config("main_module_home_page", "");
                         $data["customer_module_banner"] = AfwSession::config("customer_module_banner", "");
-                        
+
                         $data["schoolList"] = SchoolEmployee::getSchoolList($theEmployee->id);
                         // die("data=".var_export($data,true));
                         $data["title"] = "قائمة المنشآت التي أنت تعمل فيها أو تشرف عليها";
-                        
-                        
-                }
-                else
-                {
+                } else {
                         die("here rafik");
-                        $login_module = AfwSession::config("login_module","store"); 
+                        $login_module = AfwSession::config("login_module", "store");
                         $this->renderLogOutMessage("Session ended !", "../$login_module/login.php");
                         return [];
                 }
@@ -195,13 +185,11 @@ class StoreController extends AfwController{
 
         public function myschools($request)
         {
-                foreach($request as $key => $value) $$key = $value;
+                foreach ($request as $key => $value) $$key = $value;
                 $data = $request;
-                
+
                 // call the view to show
-                if($data) $this->render("store", "my_schools", $data);
-                else return ;
-                
+                if ($data) $this->render("store", "my_schools", $data);
+                else return;
         }
-    }
-?>
+}
